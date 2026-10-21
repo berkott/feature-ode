@@ -1,0 +1,30 @@
+[project]
+name = "feature-ode"
+version = "0.1.0"
+description = "Code for the paper 'A \"feature ODE\" describing the learning behavior of shallow MLPs on simple functions'."
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+dependencies = [
+    "attrs>=25.4.0",
+    "matplotlib==3.10.8",  # pinned: newer versions shift text layout by a few pixels, so figures no longer match the paper exactly
+    "numpy>=2.0.2",
+    "pyyaml>=6.0.3",
+    "torch>=2.11",
+]
+
+[project.optional-dependencies]
+modal = ["modal>=1.2.6"]
+
+[dependency-groups]
+dev = ["pytest>=8.3"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["feature_ode"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

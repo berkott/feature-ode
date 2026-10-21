@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[oc]
+*.egg-info/
+build/
+dist/
+.venv/
+.pytest_cache/
+
+# Experiment outputs and regenerated figures stay out of git.
+results/
+figures/output/
+
+# macOS
+.DS_Store

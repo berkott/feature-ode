@@ -1,0 +1,35 @@
+# MLP on isotropic data learning a linear target z_1 and the pure-Hermite target He_2(z_1) + He_2(z_2).
+# Used by the appendix neuron-dynamics figures for these two targets.
+data:
+  d: 2
+  batch_size: 10000
+  powerlaw_alpha: 0
+  data_seed: 0
+  target_hermite: true
+optimizer:
+  learning_rate: 0.1
+  convergence_threshold: 1.0e-4
+  max_epochs: -1
+  ode_step_size: 0.1
+  ode_convergence_threshold: 1.0e-6
+  ode_max_steps: 10000000
+model:
+  model_class: mlp
+  a_0: 0.707106781187
+  width: 8192
+  init_seeds: [0]
+  sigma_frozen: 0.05
+  activation: cos
+evaluate:
+  a_elements_plot: [[0, 0], [1, 1], [0, 1], [1, 0]]
+  smoothing_factor: 0.95
+  neuron_histogram: true
+  neuron_percentiles: true
+  neuron_heatmap: true
+grid_search:
+  - axis: target
+    values:
+      - label: linear
+        data: {target: "x_{0}"}
+      - label: pure_hermite
+        data: {target: "x_{0}^2 + x_{1}^2"}

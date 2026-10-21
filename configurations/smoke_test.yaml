@@ -1,0 +1,33 @@
+# A tiny run of every model on CPU in under a minute, to check that the installation works.
+data:
+  d: 2
+  batch_size: 256
+  powerlaw_alpha: 1.0
+  data_seed: 0
+  target_hermite: true
+  target: "x_{0}"
+optimizer:
+  learning_rate: 0.5
+  convergence_threshold: 0
+  max_epochs: 200
+  ode_step_size: 0.1
+model:
+  a_0: 0.707106781187
+  width: 64
+  init_seeds: [0, 1]
+  orders: [0, 1, 2]
+  activation: cos
+evaluate:
+  a_elements_plot: [[0, 0], [1, 1]]
+  neuron_heatmap: true
+grid_search:
+  - axis: model
+    values:
+      - label: mlp
+        model: {model_class: mlp}
+      - label: semi_frozen_network
+        model: {model_class: semi_frozen_network}
+      - label: dpr
+        model: {model_class: dpr}
+      - label: feature_ode
+        model: {model_class: feature_ode}

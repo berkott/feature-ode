@@ -1,0 +1,29 @@
+# MLP learning the two-term staircase f*(z) = z_1 + z_1 z_2.
+# Used by Figure 3 (left), Figure 4, and the appendix neuron-dynamics figure for this target.
+data:
+  d: 2
+  batch_size: 10000
+  powerlaw_alpha: 10
+  data_seed: 0
+  target_hermite: true
+  target: "x_{0} + x_{0} x_{1}"
+optimizer:
+  learning_rate: 0.5
+  convergence_threshold: 1.0e-4
+  max_epochs: -1
+  ode_step_size: 0.1
+  ode_convergence_threshold: 1.0e-6
+  ode_max_steps: 10000000
+model:
+  model_class: mlp
+  a_0: 0.707106781187
+  width: 8192
+  init_seeds: [0]
+  sigma_frozen: 0.1
+  activation: cos
+evaluate:
+  a_elements_plot: [[0, 0], [1, 1]]
+  smoothing_factor: 0.95
+  neuron_histogram: true
+  neuron_percentiles: true
+  neuron_heatmap: true

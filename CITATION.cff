@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the paper."
+title: "feature-ode"
+repository-code: "https://github.com/berkott/feature-ode"
+license: MIT
+authors:
+  - family-names: Turnbull
+    given-names: Joseph
+  - family-names: Ottlik
+    given-names: Berkan
+  - family-names: Simon
+    given-names: Jamie
+preferred-citation:
+  type: article
+  title: 'A "feature ODE" describing the learning behavior of shallow MLPs on simple functions'
+  authors:
+    - family-names: Turnbull
+      given-names: Joseph
+    - family-names: Ottlik
+      given-names: Berkan
+    - family-names: Simon
+      given-names: Jamie
+  year: 2026
+  url: "https://arxiv.org/abs/2610.25652"
+  identifiers:
+    - type: url
+      value: "https://arxiv.org/abs/2610.25652"
+  notes: "HiLD Workshop at ICML 2026"

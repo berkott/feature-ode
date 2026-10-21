@@ -1,0 +1,40 @@
+# Semi-frozen network learning four targets: z_1, He_2(z_1), z_1 + z_1 z_2, and z_1 + z_1 z_2 + z_1 z_2 z_3.
+# Used by the appendix figure comparing the semi-frozen network with the feature ODE,
+# and by the appendix neuron-dynamics figures for the linear and two-term staircase targets.
+data:
+  d: 3
+  batch_size: 10000
+  powerlaw_alpha: 1.5
+  data_seed: 0
+  target_hermite: true
+optimizer:
+  learning_rate: 0.2
+  convergence_threshold: 1.0e-4
+  max_epochs: -1
+  ode_step_size: 0.1
+  ode_convergence_threshold: 1.0e-6
+  ode_max_steps: 10000000
+model:
+  model_class: semi_frozen_network
+  a_0: 0.57735026919
+  width: 8192
+  init_seeds: [0]
+  sigma_frozen: 0.04
+  activation: cos
+evaluate:
+  a_elements_plot: [[0, 0], [1, 1], [2, 2]]
+  smoothing_factor: 0.95
+  neuron_histogram: true
+  neuron_percentiles: true
+  neuron_heatmap: true
+grid_search:
+  - axis: target
+    values:
+      - label: linear
+        data: {target: "x_{0}"}
+      - label: quadratic
+        data: {target: "x_{0}^2"}
+      - label: two_term_staircase
+        data: {target: "x_{0} + x_{0} x_{1}"}
+      - label: three_term_staircase
+        data: {target: "x_{0} + x_{0} x_{1} + x_{0} x_{1} x_{2}"}
